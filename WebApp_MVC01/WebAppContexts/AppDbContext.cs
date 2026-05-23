@@ -17,8 +17,6 @@ namespace WebApp_MVC01.WebAppContexts
             modelBuilder.ApplyConfiguration<Plan>(new PlanConfigure());
         }
 
-
-
         // DbSets
         public DbSet<Plan> Plans { get; set; }
     }
