@@ -1,3 +1,7 @@
+using GymManagment.DAL.Repositories.Classes;
+using GymManagment.DAL.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 namespace WebApp_MVC01
 {
     public class Program
@@ -8,6 +12,15 @@ namespace WebApp_MVC01
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // here ef core will automatically create DbContext / DI
+            // Register DI
+            builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+
+            builder.Services.AddDbContext<WebAppContexts.AppDbContext>(options =>
+            {
+                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             var app = builder.Build();
 

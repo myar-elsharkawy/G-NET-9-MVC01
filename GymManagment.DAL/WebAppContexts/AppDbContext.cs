@@ -8,9 +8,13 @@ namespace WebApp_MVC01.WebAppContexts
     {
         // Connection String 
         // Supposed to be in appsettings.JSON
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //   // optionsBuilder.UseSqlServer("Server = . ; Database = WebAppMVC01 ; Trusted_Connection = True ; TrustServerCertificate = True");
+        //}
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server = . ; Database = WebAppMVC01 ; Trusted_Connection = True ; TrustServerCertificate = True");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
